@@ -66,12 +66,20 @@ class CineTicketService {
         return movieFunction
     }
 
-    fun getFunctionsByMovie(movieId: String): List<MovieFunction> {
-        return movieFunctions.filter { it.movie.id == movieId }
+    fun getMovies(page: Int): Page<Movie> {
+        return getPage(movies, page)
     }
 
-    fun getReleasedMovies(): List<Movie> {
-        return movies.filter { it.releaseDate.isBefore(LocalDate.now()) }
+    fun getFunctionsByMovie(movieId: String, page: Int): Page<MovieFunction> {
+        return getPage(movieFunctions.filter { it.movie.id == movieId }, page)
+    }
+
+    fun getReleasedMovies(page: Int): Page<Movie> {
+        return getPage(movies.filter { it.releaseDate.isBefore(LocalDate.now()) }, page)
+    }
+
+    fun getFunctions(page: Int): Page<MovieFunction> {
+        return getPage(movieFunctions, page)
     }
 
     fun purchase(userId: String, movieFunctionId: String, seatId: List<String>): Purchase {
