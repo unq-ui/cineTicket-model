@@ -5,7 +5,7 @@
 
     <groupId>org.unq-ui</groupId>
     <artifactId>cineTickets</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
 
     <name>org.unq-ui cineTickets</name>

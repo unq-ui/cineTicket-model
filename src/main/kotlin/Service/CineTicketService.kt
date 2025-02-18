@@ -66,10 +66,6 @@ class CineTicketService {
         return movieFunction
     }
 
-    fun getMovies(): List<Movie> {
-        return movies
-    }
-
     fun getFunctionsByMovie(movieId: String, page: Int): Page<MovieFunction> {
         return getPage(movieFunctions.filter { it.movie.id == movieId }, page)
     }
