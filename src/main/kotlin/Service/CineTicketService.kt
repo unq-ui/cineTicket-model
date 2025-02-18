@@ -66,8 +66,8 @@ class CineTicketService {
         return movieFunction
     }
 
-    fun getMovies(page: Int): Page<Movie> {
-        return getPage(movies, page)
+    fun getMovies(): List<Movie> {
+        return movies
     }
 
     fun getFunctionsByMovie(movieId: String, page: Int): Page<MovieFunction> {
@@ -80,6 +80,10 @@ class CineTicketService {
 
     fun getFunctions(page: Int): Page<MovieFunction> {
         return getPage(movieFunctions, page)
+    }
+
+    fun getFunctionByMovieAndId(movieId: String, functionId: String): MovieFunction {
+        return movieFunctions.find { it.movie.id == movieId && it.id == functionId } ?: throw CineException("Movie function not found")
     }
 
     fun purchase(userId: String, movieFunctionId: String, seatId: List<String>): Purchase {
